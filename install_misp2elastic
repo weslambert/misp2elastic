@@ -5,9 +5,10 @@
 OUT_DIR="/opt/misp2elastic"
 CONFIG_DIR="/etc/misp2elastic"
 CONTAINER_NAME="misp2elastic"
+REPO="misp2elastic"
 
 # Clone repo and create config dir
-git clone https://github.com/weslambert/securityonion-misp2elastic $OUT_DIR
+git clone https://github.com/weslambert/$REPO $OUT_DIR
 mkdir -p $CONFIG_DIR
 
 # Copy over our config
@@ -16,6 +17,14 @@ for i in misp2elastic.conf misp2elastic.yaml; do
 done
 
 cp $OUT_DIR/logstash/* /etc/logstash/custom
+
+#Install docker-compose if not already installed
+if dpkg -l | grep -q -i "docker-compose"; then
+        :
+else
+        echo "Installing docker-compose..."
+        apt-get install -y docker-compose
+fi
 
 echo "Installation complete!"
 echo
