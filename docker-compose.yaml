@@ -12,7 +12,7 @@ services:
      
   misp2elastic:
     container_name: misp2elastic
-    build: /opt/misp2elastic/mispelastic
+    build: /opt/misp2elastic/misp2elastic
     networks:
       - so-elastic-net
     volumes:
