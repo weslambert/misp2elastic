@@ -1,0 +1,10 @@
+to_ids: False
+iocs:
+  domain:
+    tags: ["TestTag","TestTag2"]
+  ip-dst:
+    tags: ["TestTag","TestTag2"]
+  ip-src:
+    tags: ["TestTag","TestTag2"]
+  text:
+    tags: ["TestTag","TestTag2"]

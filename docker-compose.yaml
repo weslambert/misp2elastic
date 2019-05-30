@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+
+  memcached:
+    container_name: memcached
+    image: memcached
+    ports:
+      - "11211:11211"
+    networks:
+      - so-elastic-net
+     
+  misp2elastic:
+    container_name: misp2elastic
+    build: /opt/misp2elastic/mispelastic
+    networks:
+      - so-elastic-net
+    volumes:
+      - /etc/misp2elastic/misp2elastic.conf:/misp2elastic/misp2elastic.conf:ro
+      - /etc/misp2elastic/misp2elastic.yaml:/misp2elastic/misp2elastic.yaml:ro
+
+networks:
+  so-elastic-net:
+    external: true

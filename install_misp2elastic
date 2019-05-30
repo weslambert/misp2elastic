@@ -1,0 +1,31 @@
+#!/bin/bash
+# Install memcached and MISP2Elastic script to correlate MISP threat intel with Elasticsearch events in Security Onion
+
+# Define our vars
+OUT_DIR="/opt/misp2elastic"
+CONFIG_DIR="/etc/misp2elastic"
+CONTAINER_NAME="misp2elastic"
+
+# Clone repo and create config dir
+git clone https://github.com/weslambert/securityonion-misp2elastic $OUT_DIR
+mkdir -p $CONFIG_DIR
+
+# Copy over our config
+for i in misp2elastic.conf misp2elastic.yaml; do
+  cp $OUT_DIR/misp2elastic/app/$i $CONFIG_DIR
+done
+
+cp $OUT_DIR/logstash/* /etc/logstash/custom
+
+echo "Installation complete!"
+echo
+echo "Specify connection settings for MISP and interval settings for sending to memcaached in $CONFIG_DIR/misp2elastic.conf."
+echo "You will need to specify tags for attribute types in $CONFIG_DIR/misp2elastic.yaml before starting the $CONTAINER_NAME container."
+echo 
+echo "Start services by running:"
+echo
+echo "sudo docker-compose -f $OUT_DIR/docker-compose.yaml up -d"
+echo
+echo "Make sure to restart Logstash with 'so-logstash-restart' as well.  It may take a few minuts until Logstash has fully restarted and is processing records."
+
+
