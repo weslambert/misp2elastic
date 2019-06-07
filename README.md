@@ -15,5 +15,5 @@ Once Logstash has restarted and pulled in the new config, check to see if entrie
 
 `echo "stats cachedump 1 0" | nc localhost 11211`
 
-If entries are present, then if there are matches in the Logstash pipeline according to the lookups defined in `/etc/logstash/custom/8300_postprocess_misp_tagging.conf`, you should see a tag appended to events with matches, as well as a field called `misp_match`.  You will also need to refresh the field list for the index pattern in Kibana (Management -> Index Patterns) in order to search on the misp_match field and use it for visualizations, etc.
+If entries are present, then if there are matches in the Logstash pipeline according to the lookups defined in `/etc/logstash/custom/8300_postprocess_misp_tagging.conf`, you should see a tag appended to events with matches, as well as a field called `misp_match`.  You will also need to refresh the field list for the index pattern in Kibana (Management -> Index Patterns) in order to search on the `misp_match` field and use it for visualizations, etc.
 
