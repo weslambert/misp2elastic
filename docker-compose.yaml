@@ -5,6 +5,7 @@ services:
   memcached:
     container_name: memcached
     image: memcached
+    restart: unless-stopped
     ports:
       - "11211:11211"
     networks:
@@ -13,6 +14,7 @@ services:
   misp2elastic:
     container_name: misp2elastic
     build: /opt/misp2elastic/misp2elastic
+    restart: unless-stopped
     networks:
       - so-elastic-net
     volumes:
