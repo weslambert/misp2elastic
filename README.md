@@ -1,6 +1,11 @@
 # misp2elastic
 Dockerized method to pull threat intel from MISP and use it to enrich Elasticsearch data via Logstash and Memcached.
 
+Based on original idea/implementation by @DCSecuritydk: 
+
+https://www.securitydistractions.com/2019/05/17/enriching-elasticsearch-with-threat-data-part-1-misp/
+
+
 <a href="https://user-images.githubusercontent.com/16829864/60962753-0103a900-a2dd-11e9-86a3-2703a8aabd74.png"><img src="https://user-images.githubusercontent.com/16829864/60962753-0103a900-a2dd-11e9-86a3-2703a8aabd74.png"></a>
 
 NOTE: This has only been tested in a standalone configuration with Security Onion.
